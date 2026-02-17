@@ -40,36 +40,59 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(145deg, #fef3c7 0%, #fde68a 30%, #f8fafc 70%, #e0e7ff 100%);
+  position: relative;
+}
+
+.login-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .login-box {
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  position: relative;
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
-.login-logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
+.login-logo-img {
+  width: 72px;
+  height: 72px;
   display: block;
+  margin: 0 auto 12px;
+}
+
+.login-logo-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  display: block;
+  background: linear-gradient(135deg, #b45309 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .login-subtitle {
   font-size: 0.95rem;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 6px;
+  font-weight: 500;
 }
 
 .login-form .form-group {
@@ -96,7 +119,8 @@ body {
 
 .login-form input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
 }
 
 .login-error {
@@ -133,11 +157,20 @@ body {
 }
 
 .sidebar-header {
-  padding: 1.5rem;
+  padding: 1.25rem 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.logo {
+.logo-img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.logo-text {
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--sidebar-active);
@@ -197,13 +230,20 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--accent);
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1rem;
+  overflow: hidden;
+}
+
+.user-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-name {
@@ -238,7 +278,19 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: var(--shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.topbar-logo {
+  width: 32px;
+  height: 32px;
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .topbar-logo {
+    display: block;
+  }
 }
 
 .menu-toggle {
@@ -326,6 +378,15 @@ body {
   background: linear-gradient(180deg, var(--accent), #818cf8);
 }
 
+.stat-card:hover {
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.stat-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
 .stat-label {
   display: block;
   font-size: 0.85rem;
@@ -360,9 +421,14 @@ body {
   background: var(--card-bg);
   border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border);
   margin-bottom: 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.08);
 }
 
 .card-title {
@@ -462,12 +528,14 @@ body {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
   color: white;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: linear-gradient(135deg, #d97706 0%, #c2410c 100%);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
 }
 
 .btn-sm {
