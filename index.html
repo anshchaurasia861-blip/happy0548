@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy - Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-box">
+      <div class="login-header">
+        <span class="login-logo">😊 Happy</span>
+        <p class="login-subtitle">Admin Panel</p>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="login-phone">Mobile Number</label>
+          <input type="tel" id="login-phone" placeholder="Enter your mobile number" maxlength="10" required autocomplete="tel">
+        </div>
+        <p id="login-error" class="login-error" style="display: none;">Invalid number. Please enter 8299021878 to login.</p>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="app-panel" class="app" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">😊 Happy</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="users">
+          <span class="nav-icon">👥</span>
+          <span>Users</span>
+        </a>
+        <a href="#" class="nav-item" data-page="orders">
+          <span class="nav-icon">📦</span>
+          <span>Orders</span>
+        </a>
+        <a href="#" class="nav-item" data-page="products">
+          <span class="nav-icon">🛍️</span>
+          <span>Products</span>
+        </a>
+        <a href="#" class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">H</div>
+          <div>
+            <div class="user-name">Happy</div>
+            <div class="user-role">Admin</div>
+          </div>
+        </div>
+        <a href="#" id="logout-btn" class="nav-item">
+          <span class="nav-icon">🚪</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <h1 class="page-title">Dashboard</h1>
+        <div class="topbar-actions">
+          <button class="btn-icon" title="Notifications">🔔</button>
+          <button class="btn-icon" title="Search">🔍</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Dashboard Page -->
+        <section id="page-dashboard" class="page active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Total Users</span>
+              <span class="stat-value">2,847</span>
+              <span class="stat-change positive">+12%</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Revenue</span>
+              <span class="stat-value">₹4,52,000</span>
+              <span class="stat-change positive">+8%</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Orders</span>
+              <span class="stat-value">1,234</span>
+              <span class="stat-change negative">-3%</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Products</span>
+              <span class="stat-value">156</span>
+              <span class="stat-change positive">+5%</span>
+            </div>
+          </div>
+          <div class="card">
+            <h2 class="card-title">Recent Activity</h2>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rahul Kumar</td>
+                    <td>New order #1024</td>
+                    <td>17 Feb 2025</td>
+                    <td><span class="badge success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Priya Sharma</td>
+                    <td>Account updated</td>
+                    <td>17 Feb 2025</td>
+                    <td><span class="badge info">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>Amit Singh</td>
+                    <td>Order #1023 shipped</td>
+                    <td>16 Feb 2025</td>
+                    <td><span class="badge success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Neha Gupta</td>
+                    <td>New registration</td>
+                    <td>16 Feb 2025</td>
+                    <td><span class="badge warning">Review</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Users Page -->
+        <section id="page-users" class="page">
+          <div class="card">
+            <div class="card-header-row">
+              <h2 class="card-title">All Users</h2>
+              <button class="btn btn-primary">+ Add User</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1001</td>
+                    <td>Rahul Kumar</td>
+                    <td>rahul@example.com</td>
+                    <td><span class="badge info">User</span></td>
+                    <td>15 Jan 2025</td>
+                    <td><button class="btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td>#1002</td>
+                    <td>Priya Sharma</td>
+                    <td>priya@example.com</td>
+                    <td><span class="badge success">Admin</span></td>
+                    <td>10 Jan 2025</td>
+                    <td><button class="btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td>#1003</td>
+                    <td>Amit Singh</td>
+                    <td>amit@example.com</td>
+                    <td><span class="badge info">User</span></td>
+                    <td>05 Jan 2025</td>
+                    <td><button class="btn-sm">Edit</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Orders Page -->
+        <section id="page-orders" class="page">
+          <div class="card">
+            <h2 class="card-title">Orders</h2>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1024</td>
+                    <td>Rahul Kumar</td>
+                    <td>₹2,499</td>
+                    <td><span class="badge success">Delivered</span></td>
+                    <td>17 Feb 2025</td>
+                  </tr>
+                  <tr>
+                    <td>#1023</td>
+                    <td>Amit Singh</td>
+                    <td>₹5,999</td>
+                    <td><span class="badge info">Shipped</span></td>
+                    <td>16 Feb 2025</td>
+                  </tr>
+                  <tr>
+                    <td>#1022</td>
+                    <td>Neha Gupta</td>
+                    <td>₹1,299</td>
+                    <td><span class="badge warning">Processing</span></td>
+                    <td>16 Feb 2025</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Products Page -->
+        <section id="page-products" class="page">
+          <div class="card">
+            <div class="card-header-row">
+              <h2 class="card-title">Products</h2>
+              <button class="btn btn-primary">+ Add Product</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Wireless Headphones</td>
+                    <td>Electronics</td>
+                    <td>₹2,499</td>
+                    <td>45</td>
+                    <td><span class="badge success">In Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>Running Shoes</td>
+                    <td>Sports</td>
+                    <td>₹3,999</td>
+                    <td>12</td>
+                    <td><span class="badge warning">Low Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>Smart Watch</td>
+                    <td>Electronics</td>
+                    <td>₹4,499</td>
+                    <td>0</td>
+                    <td><span class="badge negative">Out of Stock</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Page -->
+        <section id="page-settings" class="page">
+          <div class="card">
+            <h2 class="card-title">Settings</h2>
+            <div class="settings-list">
+              <div class="setting-item">
+                <div>
+                  <strong>Email Notifications</strong>
+                  <p class="setting-desc">Receive emails for new orders and users</p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-item">
+                <div>
+                  <strong>Dark Mode</strong>
+                  <p class="setting-desc">Switch to dark theme</p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-item">
+                <div>
+                  <strong>Two-Factor Auth</strong>
+                  <p class="setting-desc">Add extra security to your account</p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
